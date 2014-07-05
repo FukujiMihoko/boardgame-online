@@ -1,14 +1,16 @@
 import java.lang.Math;
 import java.io.*;
+import java.util.Scanner;
 
-class boardgameonline{
-	public static void main (String[] args) throws IOException {	
-		//throws IOException pro BufferedInputStream de baixo rodar (DEM THROWS)
+class boardgameonline {
+
+	public static void main (String[] args) {	
 		player[] jogador = new player[4];
 		for (int i=0;i<jogador.length;i++) {
 			jogador[i] = new player();
 		}
 		board a = new board();
+		Scanner sc = new Scanner(System.in);
 		//Enquanto o jogo está rodando, roda a rotina padrão de um turno (exceções serão tratadas em turno())
 		while (a.isHappening()) {
 			System.out.println("Turno "+a.thisturn+"/"+a.turns);
@@ -18,9 +20,7 @@ class boardgameonline{
 			}
 			a.thisturn++;
 			//Faz esperar um enter ;)
-			//NÃO SEI O QUE MAIS ESSA PORRA FAZ BTW
-			BufferedInputStream reader = new BufferedInputStream(System.in);
-			reader.read();
+			sc.nextLine();
 		}
 	}
 
@@ -46,7 +46,6 @@ class boardgameonline{
 		t0 = System.currentTimeMillis();
 		do {
 			t1 = System.currentTimeMillis();
-		}
-		while (t1 - t0 < n);
+		} while (t1 - t0 < n);
 	}
 }
